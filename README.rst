@@ -13,7 +13,7 @@ Installation
 
 Configuration
 -------------------------
-You will need a Google Directions API key. See `Google Directions API documentation <https://developers.google.com/maps/documentation/directions/get-api-key>`_ for directions on how to obtain a key.
+You will need a Google Directions API key. See `Google Directions API documentation <https://developers.google.com/maps/documentation/directions/get-api-key>`_ for instructions on how to obtain a key.
 
 Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This typically involves adding something like the following to your ``.profile`` file:
 
@@ -53,7 +53,7 @@ Display multiple options for travelling from London to Edinburgh, arriving by 2p
 
 .. code:: none
 
-    gdir -a 081014:00 -M "London" "Edinburgh" 
+    $ gdir -a 081014:00 -M "London" "Edinburgh" 
     
     09:00-13:20*T London, UK -> Edinburgh, UK 632km
     09:00-13:20 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH WAVERLEY
