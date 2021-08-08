@@ -1,11 +1,11 @@
-gdir: Find out train/bus times via the command line
+gdir: Find Out Train/Bus Times Using the Command Line
 =========================
 
-gdir is a command line tool which queries the Google Directions API for public transport routes and displays results as human-readable text.
+``gdir`` is a command line tool which queries the Google Directions API for public transport routes and displays results as human-readable text.
 
 Installation
 -------------------------
-gdir is listed on the Python Package Index at https://pypi.python.org/pypi/pyitlib/ and may be installed using ``pip`` as follows:
+``gdir`` is listed on the Python Package Index at https://pypi.python.org/pypi/gdir/ and may be installed using ``pip`` as follows:
 
 .. code:: python
 
@@ -15,7 +15,7 @@ Configuration
 -------------------------
 You will need a Google Directions API key. For instructions on how to get one, see https://developers.google.com/maps/documentation/directions/get-api-key.
 
-Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This might involve adding something like this to your ``.profile file``:
+Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This might involve adding something like this to your ``.profile`` file:
 
 .. code:: bash
 
@@ -23,7 +23,7 @@ Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This mig
 
 Example Usage
 -------------------------
-Display directions for travel from Tower Bridge, London to Buckingham Palace, using any mode of public transport:
+Display directions for travelling from Tower Bridge, London to Buckingham Palace, using any mode of public transport:
 
 .. code:: none
 
@@ -49,7 +49,7 @@ Display directions for the same origin and destination, but prefer to travel by 
                 alight at VICTORIA STATION (STOP G)
          10mins Walk to London SW1A 1AA, UK 0.8km
 
-Display multiple options for travel from London to Edinburgh, arriving by 2pm on 10th August:
+Display multiple options for travelling from London to Edinburgh, arriving by 2pm on 10th August:
 
 .. code:: none
 
