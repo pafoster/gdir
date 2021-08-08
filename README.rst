@@ -1,4 +1,4 @@
-gdir: Find Out Train/Bus Times Using the Command Line
+gdir: Get Train/Bus Times Using the Command Line
 =========================
 
 ``gdir`` is a command line tool which queries the Google Directions API for public transport routes and displays results as human-readable text.
@@ -15,7 +15,7 @@ Configuration
 -------------------------
 You will need a Google Directions API key. For instructions on how to get one, see https://developers.google.com/maps/documentation/directions/get-api-key.
 
-Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This might involve adding something like this to your ``.profile`` file:
+Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This typically involves adding something like the following to your ``.profile`` file:
 
 .. code:: bash
 
