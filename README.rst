@@ -5,15 +5,15 @@ gdir: Get Train/Bus Times Using the Command Line
 
 Installation
 -------------------------
-``gdir`` is listed on the Python Package Index at https://pypi.python.org/pypi/gdir/ and may be installed using ``pip`` as follows:
+``gdir`` is listed on the `Python Package Index <https://pypi.org>`_ and may be installed using ``pip`` as follows:
 
-.. code:: python
+.. code:: shell
 
-    pip install gdir
+    $ pip install gdir
 
 Configuration
 -------------------------
-You will need a Google Directions API key. For instructions on how to get one, see https://developers.google.com/maps/documentation/directions/get-api-key.
+You will need a Google Directions API key. See `Google Directions API documentation <https://developers.google.com/maps/documentation/directions/get-api-key>`_ for directions on how to obtain a key.
 
 Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This typically involves adding something like the following to your ``.profile`` file:
 
