@@ -9,7 +9,7 @@ long_description = (here / 'README.rst').read_text(encoding='utf-8')
 setup(
     name='gdir',
     version='0.1.0',
-    description='Command line tool which queries the Google Directions API for public transport routes and displays results as human-readable text',
+    description='Command line tool which queries Google Directions for public transport routes. Displays results as human-readable text.',
     long_description=long_description,
     long_description_content_type='text/x-rst',
     url='https://github.com/pafoster/gdir',
