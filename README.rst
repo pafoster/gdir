@@ -7,7 +7,7 @@ Installation
 -------------------------
 ``gdir`` is listed on the `Python Package Index <https://pypi.org>`_ and may be installed using ``pip`` as follows:
 
-.. code:: shell
+.. code:: shell-session
 
     $ pip install gdir
 
@@ -25,7 +25,7 @@ Example Usage
 -------------------------
 Display directions for travelling from Tower Bridge, London to Buckingham Palace, using any mode of public transport:
 
-.. code:: none
+.. code:: shell-session
 
     $ gdir "Tower Bridge, London" "Buckingham Place"
 
@@ -36,7 +36,7 @@ Display directions for travelling from Tower Bridge, London to Buckingham Palace
 
 Display directions for the same origin and destination, but prefer to travel by bus and depart at 10:00am:
 
-.. code:: none
+.. code:: shell-session
 
     $ gdir -b -d 10:00 "Tower Bridge, London" "Buckingham Place"
 
@@ -51,7 +51,7 @@ Display directions for the same origin and destination, but prefer to travel by 
 
 Display multiple options for travelling from London to Edinburgh, arriving by 2pm on 10th August:
 
-.. code:: none
+.. code:: shell-session
 
     $ gdir -a 081014:00 -M "London" "Edinburgh" 
     
@@ -74,7 +74,7 @@ Display multiple options for travelling from London to Edinburgh, arriving by 2p
 
 Detailed Help and List of Command Line Arguments
 -------------------------
-.. code:: none
+.. code:: shell-session
 
     usage: gdir [-h] [-r] [-n] [-m] [-b] [-u] [-d time_arg | -a time_arg] [-S] [-M] [-N]
                 [-R region_code]
