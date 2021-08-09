@@ -62,9 +62,9 @@ Display **multiple options** for travelling from **London** to **Edinburgh**, **
     08:30-13:12 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH WAVERLEY
     
     08:10-13:29*TT London, UK -> Edinburgh, UK 644km
-    08:10-11:50 LONDON EUSTON board Avanti west coast train towards Glasgow Central alight at
+    08:10-11:50 LONDON EUSTON board Avanti West Coast train towards Glasgow Central alight at
                 CARLISLE
-    12:07-13:29 CARLISLE board Transpennine express train towards Edinburgh alight at EDINBURGH
+    12:07-13:29 CARLISLE board Transpennine Express train towards Edinburgh alight at EDINBURGH
                 WAVERLEY
     
     08:00-12:20*T London, UK -> Edinburgh, UK 632km
