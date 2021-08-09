@@ -1,4 +1,4 @@
-gdir: Get Train/Bus Times Using the Command Line
+gdir: Get Train/Bus Directions Using the Command Line
 =========================
 
 ``gdir`` is a command line tool which queries Google Directions for public transport routes. The tool displays results as human-readable text.
