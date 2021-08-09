@@ -12,7 +12,7 @@ colorama.init()
 
 class Directions:
     def __init__(self, origin, destination, transit_mode, departure_time, arrival_time, region,
-                 alternatives, maps_key, language):
+                 alternatives, maps_key, language, display_copyrights):
         if departure_time or arrival_time:
             # Request directions while omitting departure or arrival times to obtain latitude and
             # longitude of origin and destination
@@ -51,6 +51,8 @@ class Directions:
                 if 'transit_details' in step and 'agencies' in step['transit_details']['line']:
                     for agency in step['transit_details']['line']['agencies']:
                         self.agencies.add((agency['name'], agency['url']))
+
+        self.display_copyrights = display_copyrights
 
     @staticmethod
     def _raise_on_empty_directions(directions, origin, destination):
@@ -93,13 +95,13 @@ class Directions:
     def to_str(self, include_substeps, text_wrap):
         s = '\n'.join([r.to_str(include_substeps, text_wrap) for r in self.routes])
 
-        if len(self.copyrights) > 0:
-            s += '\n' + ' '.join(self.copyrights)
         if len(self.warnings) > 0:
             s += '\n' + '\n'.join(self.warnings)
-        if len(self.agencies) > 0:
+        if len(self.copyrights) > 0 and self.display_copyrights:
+            s += '\n' + ' '.join(self.copyrights)
+        if len(self.agencies) > 0 and self.display_copyrights:
             s += '\n' + '\n'.join([' '.join(agency) for agency in self.agencies])
-        if len(self.copyrights) > 0 or len(self.warnings) > 0 or len(self.agencies) > 0:
+        if (len(self.copyrights) > 0 or len(self.agencies) > 0) and self.display_copyrights or len(self.warnings) > 0:
             s += '\n'
 
         return s

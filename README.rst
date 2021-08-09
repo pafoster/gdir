@@ -76,26 +76,30 @@ Detailed Help and List of Command Line Arguments
 -------------------------
 .. code:: none
 
-    usage: gdir [-h] [-r] [-n] [-m] [-b] [-u] [-d time_arg | -a time_arg] [-S] [-M] [-N]
-                [-R region_code]
+    usage: gdir [-h] [-r] [-n] [-m] [-b] [-u] [-d time_arg | -a time_arg] [-S]
+                [-M] [-N] [-R region_code] [-C]
                 origin destination
     
-    Query the Google Directions API using public transport ('transit') mode and write results to
-    the standard output in human-readable format. Requires environment variable
-    GOOGLE_MAPS_API_KEY defining a valid API key. Language of directions is determined from locale
-    configuration using locale.getdefaultlocale(), which reads from LC_ALL, LC_CTYPE, LANG and
+    Query the Google Directions API using public transport ('transit') mode and
+    write results to the standard output in human-readable format. Requires
+    environment variable GOOGLE_MAPS_API_KEY defining a valid API key. Language of
+    directions is determined from locale configuration using
+    locale.getdefaultlocale(), which reads from LC_ALL, LC_CTYPE, LANG and
     LANGUAGE in descending order of priority. Word wrapping is achieved using
-    shutil.get_terminal_size(), which reads from COLUMNS and which may alternatively use system
-    calls to determine the terminal width, using a fall-back value of 80 if the terminal width
-    could not be determined.
+    shutil.get_terminal_size(), which reads from COLUMNS and which may
+    alternatively use system calls to determine the terminal width, using a fall-
+    back value of 80 if the terminal width could not be determined.
     
     positional arguments:
-      origin                start address (quote-enclosed) or latitude,longitude pair
-      destination           end address (quote-enclosed) or latitude,longitude pair
+      origin                start address (quote-enclosed) or latitude,longitude
+                            pair
+      destination           end address (quote-enclosed) or latitude,longitude
+                            pair
     
     optional arguments:
       -h, --help            show this help message and exit
-      -r, --rail            prefer to travel by rail (equivalent to train, tram, underground)
+      -r, --rail            prefer to travel by rail (equivalent to train, tram,
+                            underground)
       -n, --train           prefer to travel by train
       -m, --tram            prefer to travel by tram
       -b, --bus             prefer to travel by bus
@@ -106,17 +110,20 @@ Detailed Help and List of Command Line Arguments
                             set arrival time (see below)
       -S, --substeps        show sub-steps in output
       -M, --multiple        show multiple routes, if available
-      -N, --no-wrap         disable word wrapping (affects command line mode only; potentially
-                            useful for scripting)
+      -N, --no-wrap         disable word wrapping (affects command line mode only;
+                            potentially useful for scripting)
       -R region_code, --region region_code
-                            set region bias using the specified top-level domain two-character
-                            code (ccTLD)
+                            set region bias using the specified top-level domain
+                            two-character code (ccTLD)
+      -C, --copyright       display copyright and transport company information
+                            (see Directions API terms and conditions
     
-    Departure and arrival times are expressed in terms of local time at the origin and
-    destination, respectively. Times must be specified in the form [[[[cc]yy]mm]dd]HH[:]MM, where
-    ccyy is the year, mm is the month (ranging from 1 to 12), dd is the day (ranging from 1 to
-    31), HH is the hour (ranging from 0 to 23) and MM is the minute (ranging from 0 to 59). When
-    left unspecified, ccyy, mm and dd values are assumed to be the current year, month and day,
-    respectively. For ambiguous times arising from daylight saving transitions, it is assumed that
-    the ambiguous time is expressed in the time zone's standard time.
-
+    Departure and arrival times are expressed in terms of local time at the origin
+    and destination, respectively. Times must be specified in the form
+    [[[[cc]yy]mm]dd]HH[:]MM, where ccyy is the year, mm is the month (ranging from
+    1 to 12), dd is the day (ranging from 1 to 31), HH is the hour (ranging from 0
+    to 23) and MM is the minute (ranging from 0 to 59). When left unspecified,
+    ccyy, mm and dd values are assumed to be the current year, month and day,
+    respectively. For ambiguous times arising from daylight saving transitions, it
+    is assumed that the ambiguous time is expressed in the time zone's standard
+    time.
