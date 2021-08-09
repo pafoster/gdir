@@ -148,7 +148,7 @@ class Route:
                                        step.arrival_time),
                        '{} board {} {} towards {} alight at {}'.format(
                            step.departure_stop.upper(),
-                           step.short_name.capitalize(),
+                           step.short_name.title(),
                            step.vehicle_name.lower(),
                            step.headsign, step.arrival_stop.upper()))
 
