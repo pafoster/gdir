@@ -23,7 +23,7 @@ Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This typ
 
 Example Usage
 -------------------------
-Display directions for travelling from **Tower Bridge, London** to **Buckingham Palace**, using any mode of public transport:
+Display directions from **Tower Bridge, London** to **Buckingham Palace**, using any mode of public transport and departing now:
 
 .. code:: shell-session
 
@@ -34,7 +34,7 @@ Display directions for travelling from **Tower Bridge, London** to **Buckingham 
     09:27-09:33 LONDON BRIDGE board Jubilee underground towards Stanmore alight at GREEN PARK
          10mins Walk to London SW1A 1AA, UK 0.8km
 
-Display directions for the same origin and destination, but prefer to travel by **bus** and **depart** at **10:00am**:
+Display directions for the same origin and destination, but prefer to travel by **bus** and **depart** at **10:00am today**:
 
 .. code:: shell-session
 
@@ -70,7 +70,7 @@ Display **multiple options** for travelling from **London** to **Edinburgh**, **
     08:00-12:20*T London, UK -> Edinburgh, UK 632km
     08:00-12:20 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH WAVERLEY
 
-**Note**: If you get a *no directions found* error, try appending the city to your origin/destination address.  See also the ``-R`` flag below for setting region bias.
+**Note**: If you get a *no directions found* error, try appending the city to your origin/destination address. See also the ``-R`` flag below for setting region bias.
 
 Detailed Help and List of Command Line Arguments
 -------------------------
