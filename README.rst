@@ -1,5 +1,5 @@
 gdir: Get Train/Bus Directions Using the Command Line
-=========================
+=====================================================
 
 ``gdir`` is a command line tool which queries Google Directions for public transport routes. The tool displays results as human-readable text.
 
@@ -103,7 +103,7 @@ Display **walking sub-steps** for travelling from **The National Gallery, London
 **Note**: If you get a *no directions found* error, try appending the city to your origin/destination address. See also the ``-R`` flag below for setting region bias.
 
 Detailed Help and List of Command Line Arguments
--------------------------
+------------------------------------------------
 .. code:: none
 
     usage: gdir [-h] [-r] [-n] [-m] [-b] [-u] [-d time_arg | -a time_arg] [-S]
