@@ -52,7 +52,7 @@ Display directions for the same origin and destination, but prefer to travel by 
                 towards Walham Green alight at VICTORIA STATION (STOP G)
          10mins Walk to London SW1A 1AA, UK 0.8km
 
-Display **multiple options** for travelling from **London** to **Edinburgh**, **arriving** by **2pm** on **10th August**:
+Display **multiple options** for travelling from **London** to **Edinburgh**, **arriving** by **2pm** on **10th August this year**:
 
 .. code:: shell-session
 
