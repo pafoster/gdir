@@ -92,7 +92,7 @@ def main():
     parser.add_argument('-N', '--no-wrap', dest='text_wrap', action='store_false', help='disable word wrapping (affects command line mode only; potentially useful for scripting)')
 
     parser.add_argument('-R', '--region', metavar='region_code', type=parse_cctld, help='set region bias using the specified top-level domain two-character code (ccTLD)')
-    parser.add_argument('-C', '--copyright', action='store_true', help='display copyright and transport company information (see Directions API terms and conditions')
+    parser.add_argument('-C', '--copyright', action='store_true', help='display copyright and transport company information (see Directions API terms and conditions)')
 
     args = parser.parse_args()
 

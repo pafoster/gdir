@@ -116,7 +116,7 @@ Detailed Help and List of Command Line Arguments
                             set region bias using the specified top-level domain
                             two-character code (ccTLD)
       -C, --copyright       display copyright and transport company information
-                            (see Directions API terms and conditions
+                            (see Directions API terms and conditions)
     
     Departure and arrival times are expressed in terms of local time at the origin
     and destination, respectively. Times must be specified in the form
