@@ -126,9 +126,9 @@ Detailed Help and List of Command Line Arguments
     where the first and second column in the table are separated by a single space
     3) values in the first column may be left-padded with a variable amount of
     whitespace 4) the format of values in the first column may vary for all rows,
-    including the first row 5) routes output may be followed by two empty lines,
+    including the first row 5) route output may be followed by two empty lines,
     followed by travel warnings and/or copyright/transport agency information.
-    Status codes: 0 success; 1 generic Error; 2 invalid argument 3:
+    Status codes: 0 success; 1 generic error; 2 invalid argument; 3 
     origin/desination not found; >=4 google-maps-services-python exceptions.
     
     positional arguments:
