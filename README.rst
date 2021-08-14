@@ -3,7 +3,9 @@ gdir: Get Train/Bus Directions Using the Command Line
 
 ``gdir`` is a command line tool which queries Google Directions for public transport routes. The tool displays results as human-readable text.
 
-.. image:: https://github.com/pafoster/gdir/raw/main/img/gdir.gif
+|
+
+.. figure:: https://github.com/pafoster/gdir/raw/main/img/gdir.gif
    :width: 576
    :alt: Gdir in Action
 
