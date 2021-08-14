@@ -76,7 +76,7 @@ Display **multiple options** for travelling from **London** to **Edinburgh**, **
     08:00-12:20 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH
                 WAVERLEY
 
-Display **walking sub-steps** for travelling from **The National Gallery, London** to **Buckingham Palace**, , using any mode of public transport and departing now. (This route represents a special case, because it does not actually include any public transport steps):
+Display **walking sub-steps** for travelling from **The National Gallery, London** to **Buckingham Palace**, using any mode of public transport and departing now. (This route represents a special case, because it does not actually include any public transport steps):
 
 .. code:: shell-session
 
