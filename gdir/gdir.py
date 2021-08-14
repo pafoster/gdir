@@ -78,12 +78,11 @@ def main():
     # group.add_argument('-b', '--bicycle', dest='mode', action='store_const', const='bicycling', help='travel by bicycle instead of public transport')
     # group.add_argument('-f', '--foot', dest='mode', action='store_const', const='walking', help='travel on foot instead of public transport')
 
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument('-r', '--rail', dest='transit_mode', action='store_const', const='rail', help='prefer to travel by rail (equivalent to train, tram, underground)')
-    group.add_argument('-n', '--train', dest='transit_mode', action='store_const', const='train', help='prefer to travel by train')
-    group.add_argument('-m', '--tram', dest='transit_mode', action='store_const', const='tram', help='prefer to travel by tram')
-    group.add_argument('-b', '--bus', dest='transit_mode', action='store_const', const='bus', help='prefer to travel by bus')
-    group.add_argument('-u', '--underground', dest='transit_mode', action='store_const', const='subway', help='prefer to travel by underground (a.k.a. subway)')
+    parser.add_argument('-r', '--rail', action='store_const', const='rail', help='prefer to travel by rail (equivalent to train, tram, underground)')
+    parser.add_argument('-n', '--train', action='store_const', const='train', help='prefer to travel by train')
+    parser.add_argument('-m', '--tram', action='store_const', const='tram', help='prefer to travel by tram')
+    parser.add_argument('-b', '--bus', action='store_const', const='bus', help='prefer to travel by bus')
+    parser.add_argument('-u', '--underground', action='store_const', const='subway', help='prefer to travel by underground (a.k.a. subway)')
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-d', '--depart', dest='departure_time', metavar='time_arg', type=parse_time, help='set departure time (see below)')
@@ -97,13 +96,15 @@ def main():
     parser.add_argument('-C', '--copyright', action='store_true', help='display copyright and transport agency information (see Directions API terms and conditions)')
 
     args = parser.parse_args()
+    transit_modes = [m for m in (args.rail, args.train, args.tram, args.bus,
+                                 args.underground) if m is not None]
 
     if 'GOOGLE_MAPS_API_KEY' not in os.environ:
         print('Environment variable GOOGLE_MAPS_API_KEY undefined', file=sys.stderr)
         sys.exit(2)
 
     try:
-        directions = Directions(args.origin, args.destination, args.transit_mode,
+        directions = Directions(args.origin, args.destination, transit_modes,
                                 args.departure_time,
                                 args.arrival_time, args.region, args.alternatives,
                                 os.environ['GOOGLE_MAPS_API_KEY'], locale.getdefaultlocale()[0],

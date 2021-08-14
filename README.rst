@@ -106,7 +106,7 @@ Detailed Help and List of Command Line Arguments
 -------------------------
 .. code:: none
 
-    usage: gdir [-h] [-r | -n | -m | -b | -u] [-d time_arg | -a time_arg] [-S]
+    usage: gdir [-h] [-r] [-n] [-m] [-b] [-u] [-d time_arg | -a time_arg] [-S]
                 [-M] [-N] [-R region_code] [-C]
                 origin destination
     
