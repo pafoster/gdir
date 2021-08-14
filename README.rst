@@ -94,7 +94,15 @@ Detailed Help and List of Command Line Arguments
     LANGUAGE in descending order of priority. Word wrapping is achieved using
     shutil.get_terminal_size(), which reads from COLUMNS and which may
     alternatively use system calls to determine the terminal width, using a fall-
-    back value of 80 if the terminal width could not be determined.
+    back value of 80 if the terminal width could not be determined. Scripts may
+    use the -N flag (see below) to disable word wrapping but should not make
+    excessive assumptions about the structure of output: When using the -N flag,
+    valid assumptions are 1) routes are delimited by empty lines 2) each route may
+    be represented as a two-column table, where rows are separated by newlines and
+    where the first and second column in the table are separated by a single space
+    3) values in the first column may be left-padded with a variable amount of
+    whitespace 4) the format of values in the first column may vary for all rows,
+    including the first row.
     
     positional arguments:
       origin                start address (quote-enclosed) or latitude,longitude
