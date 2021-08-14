@@ -124,6 +124,8 @@ Detailed Help and List of Command Line Arguments
     whitespace 4) the format of values in the first column may vary for all rows,
     including the first row 5) routes output may be followed by two empty lines,
     followed by travel warnings and/or copyright/transport agency information.
+    Status codes: 0 success; 1 generic Error; 2 invalid argument 3:
+    origin/desination not found; >=4 google-maps-services-python exceptions.
     
     positional arguments:
       origin                start address (quote-enclosed) or latitude,longitude
