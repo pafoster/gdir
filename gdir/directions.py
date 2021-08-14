@@ -162,12 +162,12 @@ class Route:
         s = ''
         if hasattr(self, 'departure_time') and hasattr(self, 'arrival_time'):
             col1_width = max([col1_width, len('{}-{} '.format(self.departure_time, self.arrival_time))])
-            s += '{}-{} {} {} -> {} {}'.format(Style.BRIGHT+self.departure_time+Style.RESET_ALL,
-                                               Style.BRIGHT+self.arrival_time+Style.RESET_ALL,
-                                               ''.join([m.upper()[0] for m in self.modalities]),
-                                               self.start_address,
-                                               self.end_address,
-                                               self.distance)
+            s += '{}-{} ({}) {} -> {} {}'.format(Style.BRIGHT+self.departure_time+Style.RESET_ALL,
+                                                 Style.BRIGHT+self.arrival_time+Style.RESET_ALL,
+                                                 ''.join([m.upper()[0] for m in self.modalities]),
+                                                 self.start_address,
+                                                 self.end_address,
+                                                 self.distance)
         else:
             col1_width = max([col1_width, len('{} '.format(self.duration))])
             s += '{} {} -> {} {}'.format(Style.BRIGHT+self.duration+Style.RESET_ALL,

@@ -29,9 +29,11 @@ Display directions from **Tower Bridge, London** to **Buckingham Palace**, using
 
     $ gdir "Tower Bridge, London" "Buckingham Place"
 
-    09:15-09:43*U Tower Bridge, Tower Bridge Rd, London SE1 2UP, UK -> London SW1A 1AA, UK 6.0km
-         12mins Walk to London Bridge 0.9km
-    09:27-09:33 LONDON BRIDGE board Jubilee underground towards Stanmore alight at GREEN PARK
+    13:10-13:38 (U) Tower Bridge, Tower Bridge Rd, London SE1 2UP, UK -> London SW1A
+                1AA, UK 6.0km
+          7mins Walk to Tower Hill 0.5km
+    13:17-13:29 TOWER HILL board  underground towards Richmond alight at ST. JAMES'S
+                PARK
          10mins Walk to London SW1A 1AA, UK 0.8km
 
 Display directions for the same origin and destination, but prefer to travel by **bus** and **depart** at **10:00am today**:
@@ -40,36 +42,40 @@ Display directions for the same origin and destination, but prefer to travel by 
 
     $ gdir -b -d 10:00 "Tower Bridge, London" "Buckingham Place"
 
-    10:10-10:43*BB Tower Bridge, Tower Bridge Rd, London SE1 2UP, UK -> London SW1A 1AA, UK 6.8km
+    10:00-10:38 (BB) Tower Bridge, Tower Bridge Rd, London SE1 2UP, UK -> London
+                SW1A 1AA, UK 7.0km
           4mins Walk to Boss Street (Stop T) 0.3km
-    10:13-10:27 BOSS STREET (STOP T) board 381 bus towards Waterloo alight at WATERLOO STATION /
-                YORK ROAD (STOP W)
+    10:03-10:18 BOSS STREET (STOP T) board 381 bus towards Waterloo alight at COUNTY
+                HALL (STOP G)
           3mins Walk to Westminster Cathedral / Victoria Station (Stop M) 0.2km
-    10:34-10:35 WESTMINSTER CATHEDRAL / VICTORIA STATION (STOP M) board 11 bus towards Walham Green
-                alight at VICTORIA STATION (STOP G)
+    10:29-10:30 WESTMINSTER CATHEDRAL / VICTORIA STATION (STOP M) board 11 bus
+                towards Walham Green alight at VICTORIA STATION (STOP G)
          10mins Walk to London SW1A 1AA, UK 0.8km
 
 Display **multiple options** for travelling from **London** to **Edinburgh**, **arriving** by **2pm** on **10th August**:
 
 .. code:: shell-session
 
-    $ gdir -a 081014:00 -M "London" "Edinburgh" 
-    
-    09:00-13:20*T London, UK -> Edinburgh, UK 632km
-    09:00-13:20 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH WAVERLEY
-    
-    08:30-13:12*T London, UK -> Edinburgh, UK 632km
-    08:30-13:12 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH WAVERLEY
-    
-    08:10-13:29*TT London, UK -> Edinburgh, UK 644km
-    08:10-11:50 LONDON EUSTON board Avanti West Coast train towards Glasgow Central alight at
-                CARLISLE
-    12:07-13:29 CARLISLE board Transpennine Express train towards Edinburgh alight at EDINBURGH
+    $ gdir -M -a 081014:00 "London" "Edinburgh"
+
+    09:00-13:20 (T) London, UK -> Edinburgh, UK 632km
+    09:00-13:20 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH
                 WAVERLEY
     
-    08:00-12:20*T London, UK -> Edinburgh, UK 632km
-    08:00-12:20 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH WAVERLEY
-
+    08:30-13:12 (T) London, UK -> Edinburgh, UK 632km
+    08:30-13:12 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH
+                WAVERLEY
+    
+    08:10-13:29 (TT) London, UK -> Edinburgh, UK 644km
+    08:10-11:50 LONDON EUSTON board Avanti West Coast train towards Glasgow Central
+                alight at CARLISLE
+    12:07-13:29 CARLISLE board Transpennine Express train towards Edinburgh alight
+                at EDINBURGH WAVERLEY
+    
+    08:00-12:20 (T) London, UK -> Edinburgh, UK 632km
+    08:00-12:20 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH
+                WAVERLEY
+    
 **Note**: If you get a *no directions found* error, try appending the city to your origin/destination address. See also the ``-R`` flag below for setting region bias.
 
 Detailed Help and List of Command Line Arguments
