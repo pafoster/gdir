@@ -75,7 +75,27 @@ Display **multiple options** for travelling from **London** to **Edinburgh**, **
     08:00-12:20 (T) London, UK -> Edinburgh, UK 632km
     08:00-12:20 KING'S CROSS board Lner train towards Edinburgh alight at EDINBURGH
                 WAVERLEY
-    
+
+Display **walking sub-steps** for travelling from **The National Gallery, London** to **Buckingham Palace**, , using any mode of public transport and departing now. (This route represents a special case, because it does not actually include any public transport steps):
+
+.. code:: shell-session
+
+    $ gdir -S "The National Gallery, London" "Buckingham Place"
+
+    18mins Trafalgar Square, London WC2N 5DN, UK -> London SW1A 1AA, UK 1.4km
+    18mins Walk to London SW1A 1AA, UK 1.4km
+         1 Walk west on Trafalgar Square towards A4 68m
+         2 Continue onto Pall Mall E/A4 0.1km
+         3 Turn left at Haymarket 8m
+         4 Turn right onto Pall Mall/A4 0.6km
+         5 Turn left onto Cleveland Row 0.2km
+         6 Turn left 40m
+         7 Turn right 0.1km
+         8 Turn left towards Constitution Hill 66m
+         9 Turn right towards Constitution Hill 81m
+        10 Turn left onto Constitution Hill 0.1km
+        11 Continue onto Spur RdDestination will be on the left 11m
+
 **Note**: If you get a *no directions found* error, try appending the city to your origin/destination address. See also the ``-R`` flag below for setting region bias.
 
 Detailed Help and List of Command Line Arguments
