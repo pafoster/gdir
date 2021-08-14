@@ -5,15 +5,16 @@ from setuptools import setup
 
 here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / 'README.rst').read_text(encoding='utf-8')
+version = '0.1.3'
 
 setup(
     name='gdir',
-    version='0.1.1',
+    version=version,
     description='Command line tool which queries Google Directions for public transport routes. Displays results as human-readable text.',
     long_description=long_description,
     long_description_content_type='text/x-rst',
     url='https://github.com/pafoster/gdir',
-    download_url='https://github.com/pafoster/gdir/archive/0.1.0.tar.gz',
+    download_url='https://github.com/pafoster/gdir/archive/{}.tar.gz'.format(version),
     author='Peter Foster',
     author_email='pyitlib@gmx.us',
     license='MIT',

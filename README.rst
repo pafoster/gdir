@@ -1,9 +1,9 @@
 gdir: Get Train/Bus Directions Using the Command Line
-=====================================================
+-----------------------------------------------------
 
 ``gdir`` is a command line tool which queries Google Directions for public transport routes. The tool displays results as human-readable text.
 
-.. image:: img/gdir.gif
+.. image:: https://github.com/pafoster/gdir/raw/main/img/gdir.gif
    :width: 576
    :alt: Gdir in Action
 
@@ -33,11 +33,11 @@ Display directions from **Tower Bridge, London** to **Buckingham Palace**, using
 
     $ gdir "Tower Bridge, London" "Buckingham Place"
 
-    13:10-13:38 (U) Tower Bridge, Tower Bridge Rd, London SE1 2UP, UK -> London SW1A
-                1AA, UK 6.0km
+    08:02-08:30 (U) Tower Bridge, Tower Bridge Rd, London SE1 2UP, UK -> London SW1A
+                1AA, UK 6.1km
           7mins Walk to Tower Hill 0.5km
-    13:17-13:29 TOWER HILL board  underground towards Richmond alight at ST. JAMES'S
-                PARK
+    08:10-08:21 TOWER HILL board Circle underground towards Edgware Road alight at
+                ST. JAMES'S PARK
          10mins Walk to London SW1A 1AA, UK 0.8km
 
 Display directions for the same origin and destination, but prefer to travel by **bus** and **depart** at **10:00am today**:
@@ -104,7 +104,7 @@ Display **walking sub-steps** for travelling from **The National Gallery, London
 
 Detailed Help and List of Command Line Arguments
 ------------------------------------------------
-.. code:: none
+.. code::
 
     usage: gdir [-h] [-r] [-n] [-m] [-b] [-u] [-d time_arg | -a time_arg] [-S]
                 [-M] [-N] [-R region_code] [-C]
