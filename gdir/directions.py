@@ -131,14 +131,10 @@ class Route:
         return shutil.get_terminal_size(fallback=(80, 24))[0]
 
     def _generate_step_table(self, include_substeps):
-        includes_transit_steps = any([step.travel_mode == 'TRANSIT' for step in self.steps])
         for n, step in enumerate(self.steps):
             # TODO We could make a TransitStep class instead, and omit the travel_mode inst. var
             if step.travel_mode != 'TRANSIT':
-                if includes_transit_steps:
-                    yield step.duration + ' ', '{} {}'.format(step.instructions, step.distance)
-                else:
-                    yield '', '{} {}'.format(step.instructions, step.distance)
+                yield step.duration + ' ', '{} {}'.format(step.instructions, step.distance)
 
                 if len(step.substeps) > 0 and include_substeps:
                     for m, substep in enumerate(step.substeps):
@@ -165,20 +161,22 @@ class Route:
 
         s = ''
         if hasattr(self, 'departure_time') and hasattr(self, 'arrival_time'):
-            s += '{}-{}*{} {} -> {} {}'.format(Style.BRIGHT+self.departure_time+Style.RESET_ALL,
+            col1_width = max([col1_width, len('{}-{} '.format(self.departure_time, self.arrival_time))])
+            s += '{}-{} {} {} -> {} {}'.format(Style.BRIGHT+self.departure_time+Style.RESET_ALL,
                                                Style.BRIGHT+self.arrival_time+Style.RESET_ALL,
                                                ''.join([m.upper()[0] for m in self.modalities]),
                                                self.start_address,
                                                self.end_address,
                                                self.distance)
         else:
+            col1_width = max([col1_width, len('{} '.format(self.duration))])
             s += '{} {} -> {} {}'.format(Style.BRIGHT+self.duration+Style.RESET_ALL,
                                          self.start_address,
                                          self.end_address,
                                          self.distance)
         if n_columns > 0 and text_wrap:
             # We search for offset because string contains non-printable characters
-            offset = s.find('*') + 1
+            offset = s.find(' ') + 1
             s = Route._wrap_text(s[offset:], n_columns-col1_width, s[:offset],
                                  ' '*col1_width)
         s += '\n'
