@@ -6,9 +6,14 @@ import textwrap
 import colorama
 from colorama import Style
 import googlemaps
+from googlemaps.exceptions import ApiError
 import pytz
 
 colorama.init()
+
+
+class NotFoundError(Exception):
+    pass
 
 class Directions:
     def __init__(self, origin, destination, transit_mode, departure_time, arrival_time, region,
@@ -19,8 +24,6 @@ class Directions:
             directions = Directions._get_directions(origin, destination, transit_mode,
                                                     None, None,
                                                     region, alternatives, maps_key, language)
-
-            Directions._raise_on_empty_directions(directions, origin, destination)
 
             if departure_time:
                 origin_timezone = directions[0]['legs'][0]['departure_time']['time_zone']
@@ -36,7 +39,6 @@ class Directions:
                                                 arrival_time, region, alternatives,
                                                 maps_key, language)
 
-        Directions._raise_on_empty_directions(directions, origin, destination)
         self.routes = [Route(d) for d in directions]
 
         self.copyrights = set()
@@ -53,11 +55,6 @@ class Directions:
                         self.agencies.add((agency['name'], agency['url']))
 
         self.display_copyrights = display_copyrights
-
-    @staticmethod
-    def _raise_on_empty_directions(directions, origin, destination):
-        if len(directions) == 0:
-            raise ValueError('{} -> {}: No directions found'.format(origin, destination))
 
     @staticmethod
     def _convert_local_time(timezone, time):
@@ -82,13 +79,23 @@ class Directions:
 
         gmaps = googlemaps.Client(key=maps_key)
 
-        directions = gmaps.directions(origin=origin, destination=destination, mode='transit',
-                                      transit_mode=transit_mode,
-                                      alternatives=alternatives,
-                                      region=region,
-                                      departure_time=departure_time,
-                                      arrival_time=arrival_time,
-                                      language=language)
+        try:
+            directions = gmaps.directions(origin=origin, destination=destination, mode='transit',
+                                          transit_mode=transit_mode,
+                                          alternatives=alternatives,
+                                          region=region,
+                                          departure_time=departure_time,
+                                          arrival_time=arrival_time,
+                                          language=language)
+
+        except ApiError as ex:
+            if str(ex) == 'NOT_FOUND':
+                raise NotFoundError('{} -> {}: No directions found'.format(origin, destination))
+            else:
+                raise ex
+
+        if len(directions) == 0:
+            raise NotFoundError('{} -> {}: No directions found'.format(origin, destination))
 
         return directions
 

@@ -3,9 +3,11 @@ import locale
 import os
 import sys
 
+from googlemaps import exceptions as ge
+
 from gdir.cctld import CCTLDS
 from gdir.directions import Directions
-from googlemaps.exceptions import ApiError
+from gdir.directions import NotFoundError
 
 # TODO Implement terminal interface using ncurses dialog 
 #   Origin and destination become optional, and we introduce a flag -T:
@@ -97,8 +99,8 @@ def main():
     args = parser.parse_args()
 
     if 'GOOGLE_MAPS_API_KEY' not in os.environ:
-        print('Envionment variable GOOGLE_MAPS_API_KEY undefined', file=sys.stderr)
-        sys.exit(1)
+        print('Environment variable GOOGLE_MAPS_API_KEY undefined', file=sys.stderr)
+        sys.exit(2)
 
     try:
         directions = Directions(args.origin, args.destination, args.transit_mode,
@@ -108,6 +110,26 @@ def main():
                                 args.copyright)
         print(directions.to_str(args.include_substeps, args.text_wrap), end='')
 
-    except (ValueError, ApiError) as e:
+    except ValueError as e:
         print(e, file=sys.stderr)
-        sys.exit(1)
+        sys.exit(2)
+
+    except NotFoundError as e:
+        print(e, file=sys.stderr)
+        sys.exit(3)
+
+    except ge.ApiError as e:
+        print(e, file=sys.stderr)
+        sys.exit(4)
+
+    except ge.TransportError as e:
+        print(e, file=sys.stderr)
+        sys.exit(5)
+
+    except ge.HTTPError as e:
+        print(e, file=sys.stderr)
+        sys.exit(6)
+
+    except ge.Timeout as e:
+        print(e, file=sys.stderr)
+        sys.exit(7)
