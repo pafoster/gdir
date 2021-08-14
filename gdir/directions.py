@@ -95,6 +95,8 @@ class Directions:
     def to_str(self, include_substeps, text_wrap):
         s = '\n'.join([r.to_str(include_substeps, text_wrap) for r in self.routes])
 
+        if (len(self.copyrights) > 0 or len(self.agencies) > 0) and self.display_copyrights or len(self.warnings) > 0:
+            s += '\n'
         if len(self.warnings) > 0:
             s += '\n' + '\n'.join(self.warnings)
         if len(self.copyrights) > 0 and self.display_copyrights:

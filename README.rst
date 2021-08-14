@@ -122,7 +122,8 @@ Detailed Help and List of Command Line Arguments
     where the first and second column in the table are separated by a single space
     3) values in the first column may be left-padded with a variable amount of
     whitespace 4) the format of values in the first column may vary for all rows,
-    including the first row.
+    including the first row 5) routes output may be followed by two empty lines,
+    followed by travel warnings and/or copyright/transport agency information.
     
     positional arguments:
       origin                start address (quote-enclosed) or latitude,longitude
@@ -149,7 +150,7 @@ Detailed Help and List of Command Line Arguments
       -R region_code, --region region_code
                             set region bias using the specified top-level domain
                             two-character code (ccTLD)
-      -C, --copyright       display copyright and transport company information
+      -C, --copyright       display copyright and transport agency information
                             (see Directions API terms and conditions)
     
     Departure and arrival times are expressed in terms of local time at the origin
