@@ -211,16 +211,17 @@ class Step:
             self.departure_stop = step['transit_details']['departure_stop']['name']
             self.arrival_stop = step['transit_details']['arrival_stop']['name']
 
-            # TODO Input validation for empty here, fall back to alternatives
-            self.headsign = None
-            self.short_name = None
-            self.vehicle_name = None
-            if 'headsign' in step['transit_details'].keys():
-                self.headsign = step['transit_details']['headsign']
+            self.short_name = ''
+            self.vehicle_name = ''
+            self.headsign = '<unknown>'
             if 'short_name' in step['transit_details']['line'].keys():
                 self.short_name = step['transit_details']['line']['short_name']
             if 'vehicle' in step['transit_details']['line'].keys():
                 self.vehicle_name = step['transit_details']['line']['vehicle']['name']
+            if 'headsign' in step['transit_details'].keys():
+                self.headsign = step['transit_details']['headsign']
+            if self.short_name == '' and self.vehicle_name == '':
+                self.vehicle_name = '<unknown>'
 
     @staticmethod
     def _strip_html(s):
