@@ -21,8 +21,15 @@ from gdir.directions import NotFoundError
 def parse_time(time_str):
     try:
         minute = hour = day = month = year = None
+        days_delta = 0
+        s = time_str
 
-        s, minute = time_str[:-2], time_str[-2:]
+        if '+' in s:
+            assert(s.count('+') == 1)
+            s, days_delta = s.split('+')
+            days_delta = int(days_delta)
+
+        s, minute = s[:-2], s[-2:]
         assert(len(minute) == 2)
         minute = int(minute)
 
@@ -50,8 +57,8 @@ def parse_time(time_str):
             assert(len(year) == 4)
             year = int(year)
 
-        return {'time_str': time_str, 'minute': minute, 'hour': hour, 'day': day,
-                'month': month, 'year': year}
+        return {'time_str': time_str, 'days_delta': days_delta, 'minute': minute, 'hour': hour,
+                'day': day, 'month': month, 'year': year}
     except:
         raise argparse.ArgumentTypeError('{}: Invalid time specification'.format(time_str))
 
@@ -65,7 +72,7 @@ def main():
     Query the Google Directions API using public transport (\'transit\') mode and write results to the standard output in human-readable format. Requires environment variable GOOGLE_MAPS_API_KEY defining a valid API key. Language of directions is determined from locale configuration using locale.getdefaultlocale(), which reads from LC_ALL, LC_CTYPE, LANG and LANGUAGE in descending order of priority. Word wrapping is achieved using shutil.get_terminal_size(), which reads from COLUMNS and which may alternatively use system calls to determine the terminal width, using a fall-back value of 80 if the terminal width could not be determined. Scripts may use the -N flag (see below) to disable word wrapping but should not make excessive assumptions about the structure of output: When using the -N flag, valid assumptions are 1) routes are delimited by empty lines 2) each route may be represented as a two-column table, where rows are separated by newlines and where the first and second column in the table are separated by a single space 3) values in the first column may be left-padded with a variable amount of whitespace 4) the format of values in the first column may vary for all rows, including the first row 5) route output may be followed by two empty lines, followed by travel warnings and/or copyright/transport agency information. Status codes: 0 success; 1 generic error; 2 invalid argument; 3 origin/desination not found; >=4 google-maps-services-python exceptions.
     """
     epilog = """
-    Departure and arrival times are expressed in terms of local time at the origin and destination, respectively. Times must be specified in the form [[[[cc]yy]mm]dd]HH[:]MM, where ccyy is the year, mm is the month (ranging from 1 to 12), dd is the day (ranging from 1 to 31), HH is the hour (ranging from 0 to 23) and MM is the minute (ranging from 0 to 59). When left unspecified, ccyy, mm and dd values are assumed to be the current year, month and day, respectively. For ambiguous times arising from daylight saving transitions, it is assumed that the ambiguous time is expressed in the time zone's standard time.
+Departure and arrival times are expressed in terms of local time at the origin and destination, respectively. Times must be specified in the form [[[[cc]yy]mm]dd]HH[:]MM[+N], where ccyy is the year, mm is the month (ranging from 1 to 12), dd is the day (ranging from 1 to 31), HH is the hour (ranging from 0 to 23) and MM is the minute (ranging from 0 to 59). When left unspecified, ccyy, mm and dd values are assumed to be the current year, month and day, respectively. For ambiguous times arising from daylight saving transitions, it is assumed that the ambiguous time is expressed in the time zone's standard time. The suffix +N may be used to offset the specified time by N days. Thus, 12:00+1 means 'tomorrow at noon'.
     """
 
     parser = argparse.ArgumentParser(description=description, epilog=epilog)

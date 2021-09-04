@@ -59,6 +59,7 @@ class Directions:
     @staticmethod
     def _convert_local_time(timezone, time):
         time_str = time.pop('time_str')
+        days_delta = time.pop('days_delta')
 
         try:
             timezone = pytz.timezone(timezone)
@@ -69,7 +70,8 @@ class Directions:
                 if time[k] is None:
                     time[k] = getattr(current_time, k)
 
-            return timezone.localize(datetime.datetime(**time), is_dst=False)
+            return timezone.localize(datetime.datetime(**time) +
+                                     datetime.timedelta(days=days_delta), is_dst=False)
         except ValueError as ex:
             raise ValueError('{}: invalid time specification, {}'.format(time_str, str(ex)))
 
