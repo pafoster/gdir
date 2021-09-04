@@ -139,7 +139,7 @@ Detailed Help and List of Command Line Arguments
     whitespace 4) the format of values in the first column may vary for all rows,
     including the first row 5) route output may be followed by two empty lines,
     followed by travel warnings and/or copyright/transport agency information.
-    Status codes: 0 success; 1 generic error; 2 invalid argument; 3 
+    Status codes: 0 success; 1 generic error; 2 invalid argument; 3
     origin/desination not found; >=4 google-maps-services-python exceptions.
     
     positional arguments:
@@ -172,10 +172,11 @@ Detailed Help and List of Command Line Arguments
     
     Departure and arrival times are expressed in terms of local time at the origin
     and destination, respectively. Times must be specified in the form
-    [[[[cc]yy]mm]dd]HH[:]MM, where ccyy is the year, mm is the month (ranging from
-    1 to 12), dd is the day (ranging from 1 to 31), HH is the hour (ranging from 0
-    to 23) and MM is the minute (ranging from 0 to 59). When left unspecified,
-    ccyy, mm and dd values are assumed to be the current year, month and day,
-    respectively. For ambiguous times arising from daylight saving transitions, it
-    is assumed that the ambiguous time is expressed in the time zone's standard
-    time.
+    [[[[cc]yy]mm]dd]HH[:]MM[+N], where ccyy is the year, mm is the month (ranging
+    from 1 to 12), dd is the day (ranging from 1 to 31), HH is the hour (ranging
+    from 0 to 23) and MM is the minute (ranging from 0 to 59). When left
+    unspecified, ccyy, mm and dd values are assumed to be the current year, month
+    and day, respectively. For ambiguous times arising from daylight saving
+    transitions, it is assumed that the ambiguous time is expressed in the time
+    zone's standard time. The suffix +N may be used to offset the specified time
+    by N days. Thus, 12:00+1 means 'tomorrow at noon'.
