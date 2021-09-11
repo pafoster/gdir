@@ -113,7 +113,7 @@ Display **walking sub-steps** for travelling from **The National Gallery, London
 
 **Note**: If you get a *no directions found* error, try appending the city to your origin/destination address. See also the ``-R`` flag below for setting region bias.
 
-**Note 2:**: See ``-c`` ``-k`` ``-f`` flags below for setting other transport modes if required (driving, cycling, walking).
+**Note 2**: See ``-c`` ``-k`` ``-f`` flags below for setting other transport modes if required (driving, cycling, walking).
 
 Detailed Help and List of Command Line Arguments
 ------------------------------------------------
