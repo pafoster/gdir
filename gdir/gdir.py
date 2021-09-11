@@ -9,14 +9,6 @@ from gdir.cctld import CCTLDS
 from gdir.directions import Directions
 from gdir.directions import NotFoundError
 
-# TODO Implement terminal interface using ncurses dialog 
-#   Origin and destination become optional, and we introduce a flag -T:
-#   If any of the positional arguments (origin and destination) are omitted or if -T flag is selected, enter terminal mode.
-#   This way, we can allow the user to enable terminal mode and supply flags!
-#   Any specified command line arguments have the effect of setting the default value for the relevant dialogue screens:
-#   1) InputMenu widget (Origin, Destination, mode, date, etc.) 
-#   2) Use relevant dialogues for editing (date/time pickers etc.) 
-#   3) (OPTIONAL-DO THIS LATER) Display results using a menu: The top level allows the use to select the route alternative, a sub-menu displays route steps, a sub-sub menu displays sub-steps (if any, otherwise display a message saying that no sub-step information is available).
 
 def parse_time(time_str):
     try:
@@ -85,10 +77,10 @@ Departure and arrival times are expressed in terms of local time at the origin a
     # group.add_argument('-b', '--bicycle', dest='mode', action='store_const', const='bicycling', help='travel by bicycle instead of public transport')
     # group.add_argument('-f', '--foot', dest='mode', action='store_const', const='walking', help='travel on foot instead of public transport')
 
+    parser.add_argument('-b', '--bus', action='store_const', const='bus', help='prefer to travel by bus')
     parser.add_argument('-r', '--rail', action='store_const', const='rail', help='prefer to travel by rail (equivalent to train, tram, underground)')
     parser.add_argument('-n', '--train', action='store_const', const='train', help='prefer to travel by train')
     parser.add_argument('-m', '--tram', action='store_const', const='tram', help='prefer to travel by tram')
-    parser.add_argument('-b', '--bus', action='store_const', const='bus', help='prefer to travel by bus')
     parser.add_argument('-u', '--underground', action='store_const', const='subway', help='prefer to travel by underground (a.k.a. subway)')
 
     group = parser.add_mutually_exclusive_group()

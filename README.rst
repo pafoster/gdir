@@ -117,7 +117,7 @@ Detailed Help and List of Command Line Arguments
 ------------------------------------------------
 .. code::
 
-    usage: gdir [-h] [-r] [-n] [-m] [-b] [-u] [-d time_arg | -a time_arg] [-S]
+    usage: gdir [-h] [-b] [-r] [-n] [-m] [-u] [-d time_arg | -a time_arg] [-S]
                 [-M] [-N] [-R region_code] [-C]
                 origin destination
     
@@ -150,11 +150,11 @@ Detailed Help and List of Command Line Arguments
     
     optional arguments:
       -h, --help            show this help message and exit
+      -b, --bus             prefer to travel by bus
       -r, --rail            prefer to travel by rail (equivalent to train, tram,
                             underground)
       -n, --train           prefer to travel by train
       -m, --tram            prefer to travel by tram
-      -b, --bus             prefer to travel by bus
       -u, --underground     prefer to travel by underground (a.k.a. subway)
       -d time_arg, --depart time_arg
                             set departure time (see below)
