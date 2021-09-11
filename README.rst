@@ -15,7 +15,7 @@ Installation
 
 .. code:: shell-session
 
-    $ pip install gdir
+    $ python -m pip install gdir
 
 Configuration
 -------------------------
