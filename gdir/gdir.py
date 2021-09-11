@@ -61,7 +61,7 @@ def parse_cctld(s, cctlds=CCTLDS):
 
 def main():
     description = """
-    Query the Google Directions API using public transport (\'transit\') mode and write results to the standard output in human-readable format. Requires environment variable GOOGLE_MAPS_API_KEY defining a valid API key. Language of directions is determined from locale configuration using locale.getdefaultlocale(), which reads from LC_ALL, LC_CTYPE, LANG and LANGUAGE in descending order of priority. Word wrapping is achieved using shutil.get_terminal_size(), which reads from COLUMNS and which may alternatively use system calls to determine the terminal width, using a fall-back value of 80 if the terminal width could not be determined. Scripts may use the -N flag (see below) to disable word wrapping but should not make excessive assumptions about the structure of output: When using the -N flag, valid assumptions are 1) routes are delimited by empty lines 2) each route may be represented as a two-column table, where rows are separated by newlines and where the first and second column in the table are separated by a single space 3) values in the first column may be left-padded with a variable amount of whitespace 4) the format of values in the first column may vary for all rows, including the first row 5) route output may be followed by two empty lines, followed by travel warnings and/or copyright/transport agency information. Status codes: 0 success; 1 generic error; 2 invalid argument; 3 origin/desination not found; >=4 google-maps-services-python exceptions.
+    Query the Google Directions API and write results to the standard output in human-readable format. Uses public transport (\'transit\') mode by default. Requires environment variable GOOGLE_MAPS_API_KEY defining a valid API key. Language of directions is determined from locale configuration using locale.getdefaultlocale(), which reads from LC_ALL, LC_CTYPE, LANG and LANGUAGE in descending order of priority. Word wrapping is achieved using shutil.get_terminal_size(), which reads from COLUMNS and which may alternatively use system calls to determine the terminal width, using a fall-back value of 80 if the terminal width could not be determined. Scripts may use the -N flag (see below) to disable word wrapping but should not make excessive assumptions about the structure of output: When using the -N flag, valid assumptions are 1) routes are delimited by empty lines 2) each route may be represented as a two-column table, where rows are separated by newlines and where the first and second column in the table are separated by a single space 3) values in the first column may be left-padded with a variable amount of whitespace 4) the format of values in the first column may vary for all rows, including the first row 5) route output may be followed by two empty lines, followed by travel warnings and/or copyright/transport agency information. Status codes: 0 success; 1 generic error; 2 invalid argument; 3 origin/desination not found; >=4 google-maps-services-python exceptions.
     """
     epilog = """
 Departure and arrival times are expressed in terms of local time at the origin and destination, respectively. Times must be specified in the form [[[[cc]yy]mm]dd]HH[:]MM[+N], where ccyy is the year, mm is the month (ranging from 1 to 12), dd is the day (ranging from 1 to 31), HH is the hour (ranging from 0 to 23) and MM is the minute (ranging from 0 to 59). When left unspecified, ccyy, mm and dd values are assumed to be the current year, month and day, respectively. For ambiguous times arising from daylight saving transitions, it is assumed that the ambiguous time is expressed in the time zone's standard time. The suffix +N may be used to offset the specified time by N days. Thus, 12:00+1 means 'tomorrow at noon'.
@@ -71,17 +71,17 @@ Departure and arrival times are expressed in terms of local time at the origin a
     parser.add_argument('origin', help='start address (quote-enclosed) or latitude,longitude pair')
     parser.add_argument('destination', help='end address (quote-enclosed) or latitude,longitude pair')
 
-    # parser.set_defaults(mode='transit')
-    # group = parser.add_argument_group(description='Mode of transport').add_mutually_exclusive_group()
-    # group.add_argument('-c', '--car', dest='mode', action='store_const', const='driving', help='travel by car instead of public transport')
-    # group.add_argument('-b', '--bicycle', dest='mode', action='store_const', const='bicycling', help='travel by bicycle instead of public transport')
-    # group.add_argument('-f', '--foot', dest='mode', action='store_const', const='walking', help='travel on foot instead of public transport')
-
     parser.add_argument('-b', '--bus', action='store_const', const='bus', help='prefer to travel by bus')
     parser.add_argument('-r', '--rail', action='store_const', const='rail', help='prefer to travel by rail (equivalent to train, tram, underground)')
     parser.add_argument('-n', '--train', action='store_const', const='train', help='prefer to travel by train')
     parser.add_argument('-m', '--tram', action='store_const', const='tram', help='prefer to travel by tram')
     parser.add_argument('-u', '--underground', action='store_const', const='subway', help='prefer to travel by underground (a.k.a. subway)')
+
+    parser.set_defaults(mode='transit')
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('-c', '--car', dest='mode', action='store_const', const='driving', help='travel by car instead of public transport')
+    group.add_argument('-k', '--bicycle', dest='mode', action='store_const', const='bicycling', help='travel by bicycle instead of public transport')
+    group.add_argument('-f', '--foot', dest='mode', action='store_const', const='walking', help='travel on foot instead of public transport')
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-d', '--depart', dest='departure_time', metavar='time_arg', type=parse_time, help='set departure time (see below)')
@@ -103,7 +103,8 @@ Departure and arrival times are expressed in terms of local time at the origin a
         sys.exit(2)
 
     try:
-        directions = Directions(args.origin, args.destination, transit_modes,
+        directions = Directions(args.origin, args.destination, args.mode,
+                                transit_modes,
                                 args.departure_time,
                                 args.arrival_time, args.region, args.alternatives,
                                 os.environ['GOOGLE_MAPS_API_KEY'], locale.getdefaultlocale()[0],

@@ -16,12 +16,12 @@ class NotFoundError(Exception):
     pass
 
 class Directions:
-    def __init__(self, origin, destination, transit_modes, departure_time, arrival_time, region,
+    def __init__(self, origin, destination, mode, transit_modes, departure_time, arrival_time, region,
                  alternatives, maps_key, language, display_copyrights):
         if departure_time or arrival_time:
             # Request directions while omitting departure or arrival times to obtain latitude and
             # longitude of origin and destination
-            directions = Directions._get_directions(origin, destination, transit_modes,
+            directions = Directions._get_directions(origin, destination, mode, transit_modes,
                                                     None, None,
                                                     region, alternatives, maps_key, language)
 
@@ -34,7 +34,7 @@ class Directions:
                 arrival_time = Directions._convert_local_time(dest_timezone,
                                                               arrival_time)
 
-        directions = Directions._get_directions(origin, destination, transit_modes,
+        directions = Directions._get_directions(origin, destination, mode, transit_modes,
                                                 departure_time,
                                                 arrival_time, region, alternatives,
                                                 maps_key, language)
@@ -76,13 +76,13 @@ class Directions:
             raise ValueError('{}: invalid time specification, {}'.format(time_str, str(ex)))
 
     @staticmethod
-    def _get_directions(origin, destination, transit_modes, departure_time, arrival_time, region,
+    def _get_directions(origin, destination, mode, transit_modes, departure_time, arrival_time, region,
                        alternatives, maps_key, language):
 
         gmaps = googlemaps.Client(key=maps_key)
 
         try:
-            directions = gmaps.directions(origin=origin, destination=destination, mode='transit',
+            directions = gmaps.directions(origin=origin, destination=destination, mode=mode,
                                           transit_mode=transit_modes,
                                           alternatives=alternatives,
                                           region=region,

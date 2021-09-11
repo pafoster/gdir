@@ -5,12 +5,12 @@ from setuptools import setup
 
 here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / 'README.rst').read_text(encoding='utf-8')
-version = '0.2.1.0'
+version = '0.3.0.0'
 
 setup(
     name='gdir',
     version=version,
-    description='Command line tool which queries Google Directions for public transport routes. Displays results as human-readable text.',
+    description='Command line tool which queries Google Directions. Displays results as human-readable text.',
     long_description=long_description,
     long_description_content_type='text/x-rst',
     url='https://github.com/pafoster/gdir',
@@ -26,7 +26,7 @@ setup(
         'pytz~=2021.1'
     ],
 	python_requires='>=3',
-    keywords=['Google Directions', 'Google Maps', 'command line', 'terminal', 'public transport', 'transit'],
+    keywords=['Google Directions', 'Google Maps', 'command line', 'terminal', 'public transport', 'transit', 'directions'],
     classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha

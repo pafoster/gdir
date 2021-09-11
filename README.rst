@@ -1,7 +1,7 @@
 gdir: Get Train/Bus Directions Using the Command Line
 -----------------------------------------------------
 
-``gdir`` is a command line tool which queries Google Directions for public transport routes. The tool displays results as human-readable text.
+``gdir`` is a command line tool which queries Google Directions. The tool displays results as human-readable text.
 
 |
 
@@ -113,18 +113,20 @@ Display **walking sub-steps** for travelling from **The National Gallery, London
 
 **Note**: If you get a *no directions found* error, try appending the city to your origin/destination address. See also the ``-R`` flag below for setting region bias.
 
+**Note 2:**: See ``-c`` ``-k`` ``-f`` flags below for setting other transport modes if required (driving, cycling, walking).
+
 Detailed Help and List of Command Line Arguments
 ------------------------------------------------
 .. code::
 
-    usage: gdir [-h] [-b] [-r] [-n] [-m] [-u] [-d time_arg | -a time_arg] [-S]
-                [-M] [-N] [-R region_code] [-C]
+    usage: gdir [-h] [-b] [-r] [-n] [-m] [-u] [-c | -k | -f]
+                [-d time_arg | -a time_arg] [-S] [-M] [-N] [-R region_code] [-C]
                 origin destination
     
-    Query the Google Directions API using public transport ('transit') mode and
-    write results to the standard output in human-readable format. Requires
-    environment variable GOOGLE_MAPS_API_KEY defining a valid API key. Language of
-    directions is determined from locale configuration using
+    Query the Google Directions API and write results to the standard output in
+    human-readable format. Uses public transport ('transit') mode by default.
+    Requires environment variable GOOGLE_MAPS_API_KEY defining a valid API key.
+    Language of directions is determined from locale configuration using
     locale.getdefaultlocale(), which reads from LC_ALL, LC_CTYPE, LANG and
     LANGUAGE in descending order of priority. Word wrapping is achieved using
     shutil.get_terminal_size(), which reads from COLUMNS and which may
@@ -156,6 +158,9 @@ Detailed Help and List of Command Line Arguments
       -n, --train           prefer to travel by train
       -m, --tram            prefer to travel by tram
       -u, --underground     prefer to travel by underground (a.k.a. subway)
+      -c, --car             travel by car instead of public transport
+      -k, --bicycle         travel by bicycle instead of public transport
+      -f, --foot            travel on foot instead of public transport
       -d time_arg, --depart time_arg
                             set departure time (see below)
       -a time_arg, --arrive time_arg
