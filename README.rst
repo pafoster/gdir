@@ -27,7 +27,7 @@ Set the shell environment variable GOOGLE_MAPS_API_KEY to your API key. This typ
 
     export GOOGLE_MAPS_API_KEY="XXXXXXXXXXXXXXXX-XXXXXXXXXXXXX-XXXXXXXX"
 
-**Note**: If you don't want to set up your own API key, there is a `web-based version of gdir <https://gdir.telae.net>`_ - try viewing https://gdir.telae.net in a terminal-based browser like `links <http://links.twibright.com/>`_, `lynx <https://lynx.invisible-island.net/>`_, or `w3m <https://github.com/tats/w3m>`_! The web-based version implements most of the features described below.
+**Note**: If you don't want to set up your own API key, there is a **web-based version of gdir** - try viewing https://gdir.telae.net in a terminal-based browser like `links <http://links.twibright.com/>`_, `lynx <https://lynx.invisible-island.net/>`_, or `w3m <https://github.com/tats/w3m>`_! The web-based version implements most of the features described below.
 
 Example Usage
 -------------------------
