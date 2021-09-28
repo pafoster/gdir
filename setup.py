@@ -5,7 +5,7 @@ from setuptools import setup
 
 here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / 'README.rst').read_text(encoding='utf-8')
-version = '0.3.1'
+version = '0.3.2'
 
 setup(
     name='gdir',
