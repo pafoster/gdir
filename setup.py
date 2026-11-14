@@ -5,7 +5,7 @@ from setuptools import setup
 
 here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / 'README.rst').read_text(encoding='utf-8')
-version = '0.3.3'
+version = '0.3.4'
 
 setup(
     name='gdir',
@@ -38,7 +38,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Topic :: Utilities ',
+        'Topic :: Utilities',
     ],
     entry_points={
         'console_scripts': [
