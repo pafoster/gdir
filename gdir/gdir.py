@@ -106,7 +106,7 @@ Departure and arrival times are expressed in terms of local time at the origin a
         directions = Directions(args.origin, args.destination, args.mode,
                                 transit_modes,
                                 args.departure_time,
-                                args.arrival_time, args.region.lower(), args.alternatives,
+                                args.arrival_time, args.region, args.alternatives,
                                 os.environ['GOOGLE_MAPS_API_KEY'], locale.getdefaultlocale()[0],
                                 args.copyright)
         print(directions.to_str(args.include_substeps, args.text_wrap), end='')
